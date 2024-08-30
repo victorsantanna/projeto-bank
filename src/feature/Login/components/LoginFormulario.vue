@@ -15,8 +15,10 @@
                     </div>
                 </div>
                 <p><a href="">Não lembra sua senha?</a></p>
+                <router-link to="conta-usuario">
+                    <button>Entrar na conta</button>
 
-                <button>Entrar na conta</button>
+                </router-link>
 
             </div>
         </div>
