@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div :class="['container', { 'conta-usuario': isContaUsuario }]">
     <div class="conteudo-cabecalho">
       <div>
-        <img src="../assets/img/PaginaPrincipal/LogoPaginaPrincipal.png" alt="Logo">
+        <img :src="logoSrc" alt="Logo">
       </div>
       <div class="lista-cabecalho">
         <ul>
@@ -16,16 +16,29 @@
         </ul>
       </div>
     </div>
-    <div class="button">
+    <div v-if="!isContaUsuario" class="button">
       <router-link to="login">
         <button v-show="route.name !== 'login'">Entrar</button>
       </router-link>
+    </div>
+    <div v-else class="usuario-info">
+      <span>José</span>
+      <i class="fas fa-user"></i>
+      <i class="fa-regular fa-bell"></i>
     </div>
   </div>
 </template>
 
 <script setup>
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+
+const isContaUsuario = computed(() => route.name === 'conta-usuario');
+
+
+const logoSrc = computed(() => isContaUsuario.value
+  ? new URL('@/assets/img/PaginaPrincipal/LogoPaginaPrincipalAzul.png', import.meta.url).href
+  : new URL('@/assets/img/PaginaPrincipal/LogoPaginaPrincipal.png', import.meta.url).href);
 
 const route = useRoute();
 </script>
@@ -47,6 +60,11 @@ const route = useRoute();
   border-bottom: 4px solid #FEAA12;
 }
 
+.container.conta-usuario {
+  background-color: #1C213F;
+  color: #FFFFFF;
+}
+
 .conteudo-cabecalho {
   display: flex;
 
@@ -62,11 +80,13 @@ li {
   flex-direction: row;
   gap: 50px;
   text-decoration: none;
-  
+
 }
-.lista-cabecalho li{
+
+.lista-cabecalho li {
   cursor: pointer;
 }
+
 button {
   width: 100px;
   height: 30px;
@@ -82,5 +102,13 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.usuario-info {
+  gap: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
 }
 </style>
