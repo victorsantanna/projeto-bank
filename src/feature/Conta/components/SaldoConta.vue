@@ -17,7 +17,7 @@
 
 <style scoped>
 .container {
-  max-width: 400px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -29,6 +29,7 @@
 }
 
 .conteudo-saldo {
+  width: 600px;
   border: 2px solid #FEAA12;
   border-radius: 8px;
   padding: 15px;
