@@ -33,6 +33,15 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 
+import { onMounted } from 'vue';
+import { useUsuario } from '@/feature/Conta/composables/useUsuario';
+
+const{ data, error, loading, getUsuario} = useUsuario();
+
+onMounted(() => {
+  getUsuario(); // Chama a função para buscar os dados de usuário
+});
+
 const isContaUsuario = computed(() => route.name === 'conta-usuario');
 
 
