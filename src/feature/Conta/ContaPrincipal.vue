@@ -1,13 +1,20 @@
 <template>
   <div class="container">
     <CabecalhoProjeto />
-    <div>
+    <div class="conteudo-componentes">
       <div class="conteudo-principal">
         <SaldoConta />
         <MovimentacaoSaldo />
       </div>
-      <div>
-        <RealizarPagamento />
+      <div class="conteudo-pagamento">
+        <div class="pagamento-info">
+          <RealizarPagamento />
+
+        </div>
+        <div class="pagamento-info">
+          <RealizarPagamento />
+
+        </div>
       </div>
     </div>
   </div>
@@ -27,11 +34,27 @@ import RealizarPagamento from './components/RealizarPagamento.vue';
   
 }
 
+.conteudo-componentes{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .conteudo-principal{
   display: flex;
   flex-direction: column; 
   gap: 20px;
   margin: 60px;
+}
+
+.conteudo-pagamento{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.pagamento-info{
+  margin-top: 20px;
 }
 
 </style>
